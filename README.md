@@ -6,7 +6,7 @@ Global Solution de Edge Computing e Computer Systems
 - Jessica Witzler Costacurta - RM 99068
 - Julia Leite Galvão - RM 550201
 
-    Sky Garden
+        Sky Garden
    A fome é um problema urgente e global que afeta milhões de pessoas em todo o mundo. Em meio a essa realidade preocupante, surge a necessidade de buscar soluções inovadoras que garantam o acesso a alimentos saudáveis e nutritivos. O projeto Sky Garden surge como uma resposta a esse desafio, utilizando tecnologia e automação para criar um sistema eficiente de cultivo de verduras e legumes em ambientes urbanos.
   Atualmente, a produção de alimentos enfrenta diversos desafios, especialmente em áreas urbanas onde o espaço e os recursos são limitados. Além disso, as condições ambientais muitas vezes não são ideais para o crescimento saudável das plantas, resultando em desperdício e baixa produtividade. A falta de acesso a alimentos frescos e nutritivos também contribui para a má nutrição e a insegurança alimentar.
   O projeto propõe uma abordagem inovadora para enfrentar esses desafios. Utilizando sensores inteligentes interligados a um sistema de automação controlado por um microcontrolador Arduino, o ambiente de cultivo é monitorado e ajustado de acordo com as necessidades das plantas. Sensores de luminosidade, umidade do solo e temperatura garantem que as condições sejam otimizadas para o desenvolvimento das plantas, evitando o desperdício e maximizando a colheita.
