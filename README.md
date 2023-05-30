@@ -45,4 +45,4 @@ Global Solution de Edge Computing e Computer Systems
   -   1: 330 Ω Resistor
 
         Link para o projeto no tinkercad:
-https://www.tinkercad.com/things/luOCSH2Hr0Y
+  https://www.tinkercad.com/things/luOCSH2Hr0Y
