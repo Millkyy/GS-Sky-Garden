@@ -1,6 +1,7 @@
 //GS - Sky Garden
 #include <LiquidCrystal.h>
 
+//declaração de variáveis
 LiquidCrystal LCD(12,11,5,4,3,2);
 
 int SensorTempPino = 0;
@@ -20,8 +21,7 @@ int amarelo = 9;
 int azul = 10;
 int verde = 7;
 
-
-
+// define as saidas e as entradas
 void setup() 
 {
   pinMode(laranja, OUTPUT);
@@ -35,8 +35,10 @@ void setup()
   LCD.begin(16,2);
 }
 
+//declara função loop()
 void loop()
 {
+//cálculo da temperatura em graus celsius
   int SensorTempTensao = analogRead(SensorTempPino);
 
   float Tensao = SensorTempTensao*5;
@@ -44,7 +46,8 @@ void loop()
 
   float TemperaturaC = (Tensao-0.5)*100;
   
-  	if (TemperaturaC > 25) {
+//temperatura alta
+  if (TemperaturaC > 25) {
       	digitalWrite(laranja, HIGH);
       	LCD.setCursor(0,0);
       	LCD.print("Temp. ALTA      ");
@@ -55,8 +58,9 @@ void loop()
       	LCD.setCursor(12,1);
       	LCD.print("C    ");
       	delay(2000);
-    }
-   	else if (TemperaturaC < 15) {
+   }
+//temperatura baixa
+   else if (TemperaturaC < 15) {
       	digitalWrite(laranja, HIGH);
       	LCD.setCursor(0,0);
       	LCD.print("Temp. BAIXA      ");
@@ -67,8 +71,9 @@ void loop()
       	LCD.setCursor(12,1);
       	LCD.print("C    ");
       	delay(2000);
-    }
-  	else {
+   }
+//temperatura ideal
+  else {
       	digitalWrite(laranja, LOW);
       	LCD.setCursor(0,0);
       	LCD.print("Temp. IDEAL     ");
@@ -79,19 +84,20 @@ void loop()
       	LCD.setCursor(12,1);
       	LCD.print("C   ");
       	delay(2000);
-    }
+  }
   
-    
+  //ajusta a porcentagem da umidade
    int SensorUmidTensao = analogRead(SensorUmidPino);
         
    float porcem = map(SensorUmidTensao,0,1023,0,100);
   
-  	if (porcem > 60) {
+//umidade alta
+  if (porcem > 60) {
       	digitalWrite(azul, HIGH);
       	digitalWrite(motor, LOW);
       	digitalWrite(verde, LOW);
      	LCD.setCursor(0,0);
-		LCD.print("Umidade ALTA    ");
+	LCD.print("Umidade ALTA    ");
      	LCD.setCursor(0,1);
       	LCD.print("Umidade = ");
       	LCD.setCursor(10,1);
@@ -100,17 +106,18 @@ void loop()
       	LCD.print("%  ");
       	delay(2000);
       	LCD.setCursor(0,0);
-		LCD.print("Irrigador:    ");
+	LCD.print("Irrigador:    ");
       	LCD.setCursor(0,1);
       	LCD.print("DESLIGADO       ");
       	delay(2000);
-    }
-    else if (porcem < 20){
+   }
+  //umidade baixa
+   else if (porcem < 20){
       	digitalWrite(azul, HIGH);
       	digitalWrite(motor, HIGH);
       	digitalWrite(verde, HIGH);
       	LCD.setCursor(0,0);
-		LCD.print("Umidade BAIXA    ");
+	LCD.print("Umidade BAIXA    ");
       	LCD.setCursor(0,1);
       	LCD.print("Umidade = ");
       	LCD.setCursor(10,1);
@@ -119,17 +126,18 @@ void loop()
       	LCD.print("%  ");
       	delay(2000);
       	LCD.setCursor(0,0);
-		LCD.print("Irrigador:    ");
+	LCD.print("Irrigador:    ");
       	LCD.setCursor(0,1);
       	LCD.print("LIGADO         ");
       	delay(2000);
-    }
-  	else {
+  }
+//umidade ideal
+  else {
       	digitalWrite(azul, LOW);
       	digitalWrite(motor, LOW);
       	digitalWrite(verde, LOW);
      	LCD.setCursor(0,0);
-		LCD.print("Umidade IDEAL     ");
+	LCD.print("Umidade IDEAL     ");
       	LCD.setCursor(0,1);
       	LCD.print("Umidade = ");
       	LCD.setCursor(10,1);
@@ -138,43 +146,46 @@ void loop()
       	LCD.print("%  ");
       	delay(2000);
       	LCD.setCursor(0,0);
-		LCD.print("Irrigador:    ");
+	LCD.print("Irrigador:    ");
       	LCD.setCursor(0,1);
       	LCD.print("DESLIGADO       ");
       	delay(2000);
-    }
+}
   
- 
- 	if(analogRead(ldr) > 950){
+ //luminosidade alta
+ if(analogRead(ldr) > 950){
       	digitalWrite(amarelo, HIGH); 
     	LCD.setCursor(0,0);
-		LCD.print("Ambiente muito ");
+	LCD.print("Ambiente muito ");
     	LCD.setCursor(0,1);
-		LCD.print("CLARO          ");
+	LCD.print("CLARO          ");
     	delay(2000);
     
-	}
- 	else if (analogRead(ldr) < 850){
+}
+ //luminosidade baixa
+ else if (analogRead(ldr) < 850){
       	digitalWrite(amarelo, HIGH);
     	LCD.setCursor(0,0);
-		LCD.print("Ambiente muito");
+	LCD.print("Ambiente muito");
     	LCD.setCursor(0,1);
-		LCD.print("ESCURO         ");
+	LCD.print("ESCURO         ");
     	delay(2000);
-  	}
-  	else{
+  }
+ //luminosidade ideal
+  else{
       	digitalWrite(amarelo, LOW);
     	LCD.setCursor(0,0);
-		LCD.print("Ambiente     ");
+	LCD.print("Ambiente     ");
     	LCD.setCursor(0,1);
-		LCD.print("IDEAL            ");
+	LCD.print("IDEAL            ");
     	delay(2000);
- 	}
+ }
   
-  	if(analogRead(ldr) < 850 || analogRead(ldr) > 950 || TemperaturaC < 15 || TemperaturaC > 25){
+//piezo
+  if(analogRead(ldr) < 850 || analogRead(ldr) > 950 || TemperaturaC < 15 || TemperaturaC > 25){
     	digitalWrite(piezo, HIGH);
-    }
-  	else{
+  }
+  else{
     	digitalWrite(piezo, LOW);
     }
 }  
